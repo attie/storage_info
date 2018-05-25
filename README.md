@@ -93,6 +93,7 @@ By altering the last calls to `print()`, the output can look like this:
 
 Some SMART attributes also have a `py_value`:
 
- - `0x09` / Power_On_Hours
- - `0xb3` / Airflow_Temperature_Cel
- - `0xf0` / Head_Flying_Hours
+ - `0x09` / Power_On_Hours --> `${POWER_ON_HOURS}`
+ - `0xbe` / Airflow_Temperature_Cel --> `{ "cur": ${CUR}, "max": ${MAX}, "min": ${MIN} }`
+ - `0xf0` / Head_Flying_Hours --> `${FLYING_HOURS}`
+
