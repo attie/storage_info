@@ -23,7 +23,7 @@ def get_majno(name):
 
             return int(m.groupdict()['majno'])
 
-    raise Exception('cannot get loop\'s major number...')
+    raise Exception('cannot get major number for %s...' % ( name ))
 
 def get_disk_info(disk):
     in_info_section = False
