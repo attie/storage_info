@@ -97,3 +97,12 @@ Some SMART attributes also have a `py_value`:
  - `0xbe` / Airflow_Temperature_Cel --> `{ "cur": ${CUR}, "max": ${MAX}, "min": ${MIN} }`
  - `0xf0` / Head_Flying_Hours --> `${FLYING_HOURS}`
 
+
+## `sudoers`
+
+You might like to use the following rules in `/etc/sudoers` to allow easy use of this utility
+
+```
+attie ALL=(root) NOPASSWD: /usr/sbin/smartctl -i /dev/sd?
+attie ALL=(root) NOPASSWD: /usr/sbin/smartctl -A -fhex\,id /dev/sd?
+```
