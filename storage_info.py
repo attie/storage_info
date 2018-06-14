@@ -188,7 +188,10 @@ def get_table_data(devices, columns):
 
 def get_table_row(device_key, device_data, columns):
     for column in columns:
-        yield column['data'](device_key, device_data)
+        try:
+            yield column['data'](device_key, device_data)
+        except:
+            yield '?'
 
 #print(json.dumps(devices))
 print(get_table(devices))
