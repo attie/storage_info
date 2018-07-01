@@ -182,7 +182,11 @@ def get_table(devices):
         { 'text': 'Flying (h)',    'data': lambda k, v: v['smart_attributes']['0xf0']['py_value']                      },
         { 'text': 'Powered (h)',   'data': lambda k, v: v['smart_attributes']['0x09']['py_value']                      },
         { 'text': 'Power Cycles',  'data': lambda k, v: v['smart_attributes']['0x0c']['raw_value']                     },
+        { 'text': 'Cmd Timeout',   'data': lambda k, v: re.sub('^0$', '-', v['smart_attributes']['0xbc']['raw_value']) },
         { 'text': 'Reallocated',   'data': lambda k, v: re.sub('^0$', '-', v['smart_attributes']['0x05']['raw_value']) },
+        { 'text': 'ECC Recovered', 'data': lambda k, v: re.sub('^0$', '-', v['smart_attributes']['0xc3']['raw_value']) },
+        { 'text': 'Pending Realloc', 'data': lambda k, v: re.sub('^0$', '-', v['smart_attributes']['0xc5']['raw_value']) },
+        { 'text': 'Uncorrectable', 'data': lambda k, v: re.sub('^0$', '-', v['smart_attributes']['0xbb']['raw_value']) },
         { 'text': 'Temperature',   'data': lambda k, v: ' / '.join([ str(_) for _ in [
                                                             v['smart_attributes']['0xbe']['py_value']['min'],
                                                             v['smart_attributes']['0xbe']['py_value']['cur'],
