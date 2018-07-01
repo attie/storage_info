@@ -64,7 +64,13 @@ def get_disk_info(disk):
         field = info_fields[key]
 
         if 'formatter' in field:
-            value = field['formatter'](value)
+            try:
+                value = field['formatter'](value)
+            except AttributeError as e:
+                if str(e) == "'NoneType' object has no attribute 'groupdict'":
+                    continue
+                raise
+
             if value is None:
                 continue
 
@@ -118,7 +124,13 @@ def get_disk_smart_attrs(disk):
 
         if d['id'] in info_fields:
             for k, v in info_fields[d['id']].items():
-                nk, nd = v(d[k])
+                try:
+                    nk, nd = v(d[k])
+                except AttributeError as e:
+                    if str(e) == "'NoneType' object has no attribute 'groupdict'":
+                        continue
+                    raise
+
                 d[nk] = nd
 
         info[d['id']] = d
